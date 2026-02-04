@@ -83,10 +83,11 @@ token-rotation-auth/
 ├── middleware/
 │   └── auth.middleware.js
 ├── utils/
-│   └── token.utils.js
+│   └── sendAuthToken.js
+│   └── hashingPassword.js
+│   └── token.js
 ├── config/
-│   └── db.js
-├── app.js
+│   └── dbConnection.js
 ├── server.js
 └── package.json
 ```
