@@ -1,74 +1,79 @@
 # 🔐 Token Rotation Auth v1.0
 
 > **Never write authentication from scratch again.**  
-> Plug this backend into any frontend and get **secure, seamless authentication with automatic token rotation**.
+> Plug this backend into any frontend and enjoy **secure, seamless authentication with automatic token rotation**.
 
 **Token Rotation Auth v1.0** is a **reusable, production-ready authentication backend** that handles:
-- Access tokens
-- Refresh tokens
-- Secure token rotation
-- Session management
+
+- Access tokens  
+- Refresh tokens  
+- Secure token rotation  
+- Session management  
 
 Built so developers can **focus on product features instead of auth plumbing**.
 
 ---
 
-## 🚀 Why This Exists
+## 🚀 Why This Project Exists
 
-Most projects:
-- Rewrite auth logic every time
-- Handle refresh tokens incorrectly
-- Store tokens insecurely
-- Skip rotation (huge security risk)
+Most projects end up:
 
-This project solves that by giving you:
-- A **drop-in authentication backend**
+- Rewriting authentication logic repeatedly  
+- Mishandling refresh tokens  
+- Storing tokens insecurely  
+- Skipping token rotation entirely (a serious security risk)  
+
+This project solves those problems by providing:
+
+- A **plug-and-play authentication backend**
 - **Automatic refresh token rotation**
-- Secure cookie-based sessions
-- A clean API usable by **any frontend**
+- Secure **HTTP-only cookie-based sessions**
+- A clean API that works with **any frontend**
 
-> Think of this as your personal Auth Service.
+> Think of this as your **personal Auth Service** you can reuse forever.
 
 ---
 
 ## ✨ Features
 
-- ✅ JWT-based Access & Refresh Tokens
-- 🔁 **Refresh Token Rotation (single-use refresh tokens)**
-- 🔐 HTTP-only cookies for refresh tokens
-- 🧠 Stateless access tokens
-- 🧾 Persistent sessions
-- 🔄 Seamless login without forced logout
-- 🧩 Frontend-agnostic
-- 🛠 Easy to extend & customize
+- ✅ JWT-based Access & Refresh Tokens  
+- 🔁 **Single-use Refresh Token Rotation**  
+- 🔐 HTTP-only cookies for refresh tokens  
+- 🧠 Stateless, short-lived access tokens  
+- 🧾 Persistent and secure sessions  
+- 🔄 Seamless re-authentication (no forced logout)  
+- 🧩 Frontend-agnostic (Web, Mobile, SSR)  
+- 🛠 Modular and easy to extend  
 
 ---
 
 ## 🧱 Tech Stack
 
-- **Backend:** Node.js, Express.js
-- **Auth:** JSON Web Tokens (JWT)
-- **Database:** MongoDB
-- **Security:** HTTP-only cookies, token invalidation
-- **Architecture:** Modular & reusable
+| Layer | Technology |
+|-----|-----------|
+| Backend | Node.js, Express.js |
+| Authentication | JSON Web Tokens (JWT) |
+| Database | MongoDB |
+| Security | HTTP-only cookies, token invalidation |
+| Architecture | Modular & reusable |
 
 ---
 
-## 🧠 Token Rotation Flow
+## 🧠 How Token Rotation Works
 
-1. User logs in
-2. Server issues:
-   - Short-lived **Access Token**
-   - Long-lived **Refresh Token**
-3. Access token expires
-4. Frontend calls `/auth/refresh`
-5. Server:
-   - Verifies refresh token
-   - **Invalidates old refresh token**
-   - Issues new access + refresh tokens
-6. User stays logged in securely
+1. User logs in  
+2. Server issues:  
+   - Short-lived **Access Token**  
+   - Long-lived **Refresh Token**  
+3. Access token expires  
+4. Frontend calls `/auth/refresh`  
+5. Server:  
+   - Verifies refresh token  
+   - **Invalidates the old refresh token**  
+   - Issues a new access token and refresh token  
+6. User remains logged in securely  
 
-> A stolen refresh token is useless after one use.
+> Even if a refresh token is stolen, it becomes useless after one use.
 
 ---
 
@@ -82,112 +87,12 @@ token-rotation-auth/
 │   └── user.model.js
 ├── routes/
 │   └── auth.routes.js
-├── utils/
-│   └── token.utils.js
 ├── middleware/
 │   └── auth.middleware.js
+├── utils/
+│   └── token.utils.js
 ├── config/
 │   └── db.js
 ├── app.js
 ├── server.js
 └── package.json
-```
-##⚙️ Installation & Setup
-
-##1️⃣ Clone the Repository
-git clone https://github.com/Adam2053/token-rotation-auth-adam.git
-cd token-rotation-auth-adam
-
-##2️⃣ Install Dependencies
-npm install
-
-##3️⃣ Environment Variables
-Create a .env file in the root directory:
-PORT=5000
-MONGO_URI=mongodb://localhost:27017/token-auth
-ACCESS_TOKEN_SECRET=your_access_token_secret
-REFRESH_TOKEN_SECRET=your_refresh_token_secret
-ACCESS_TOKEN_EXPIRES_IN=15m
-REFRESH_TOKEN_EXPIRES_IN=7d
-
-##4️⃣ Run the Server
-Development
-npm run dev
-Production
-npm start
-Server will run on:
-http://localhost:PORT (from env) 
-
-##📜 NPM Scripts
-Script	Description
-npm run dev	Start server with nodemon
-npm start	Start production server
-🔌 API Endpoints
-Method	Endpoint	Description
-POST	/auth/register	Register a new user
-POST	/auth/login	Login and receive tokens
-POST	/auth/refresh	Rotate refresh token
-POST	/auth/logout	Logout and invalidate session
-GET	/auth/me	Get current authenticated user
-
-##🧑‍💻 Frontend Usage (Recommended Pattern)
-Call /auth/login
-Store access token in memory (NOT localStorage)
-Refresh token stays in HTTP-only cookie
-On 401 Unauthorized:
-Call /auth/refresh
-Retry failed request
-User remains logged in seamlessly
-Secure by default. No token leaks.
-
-##🔐 Security Notes
-Refresh tokens are single-use
-Old refresh tokens are invalidated
-Cookies are HTTP-only
-Access tokens are short-lived
-Prevents replay attacks
-
-##🧪 Who Should Use This?
-SaaS builders
-Indie hackers
-Startup MVPs
-Full-stack developers
-Anyone tired of rewriting auth
-
-##🛣 Future Updates
-🔍 Request & data validation using Zod
-🧪 Better error handling & typed responses
-📦 Docker support
-🔐 Role-based access control (RBAC)
-📄 Swagger / OpenAPI docs
-🔄 Advanced session management
-🤝 Contributing & Collaboration
-This project is open for collaboration.
-Have:
-
-Suggestions?
-Improvements?
-Security ideas?
-Feel free to:
-Open an issue
-Submit a pull request
-Start a discussion
-Let’s build an auth system developers can truly rely on.
-⭐ Support
-If this project saved you time:
-Star ⭐ the repo
-Share it with others
-Use it in your projects
-Built to be reused.
-Built to be secure.
-Built so you never write auth again.
-
----
-
-If you want **next**:
-- README badges  
-- Architecture diagram  
-- Next.js example client  
-- Convert this into an **npm package / SaaS auth service**
-
-Say it straight — we move fast.
