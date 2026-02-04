@@ -91,13 +91,17 @@ token-rotation-auth/
 ├── app.js
 ├── server.js
 └── package.json
-⚙️ Installation & Setup
-1️⃣ Clone the Repository
+```
+##⚙️ Installation & Setup
+
+##1️⃣ Clone the Repository
 git clone https://github.com/Adam2053/token-rotation-auth-adam.git
 cd token-rotation-auth-adam
-2️⃣ Install Dependencies
+
+##2️⃣ Install Dependencies
 npm install
-3️⃣ Environment Variables
+
+##3️⃣ Environment Variables
 Create a .env file in the root directory:
 PORT=5000
 MONGO_URI=mongodb://localhost:27017/token-auth
@@ -105,14 +109,16 @@ ACCESS_TOKEN_SECRET=your_access_token_secret
 REFRESH_TOKEN_SECRET=your_refresh_token_secret
 ACCESS_TOKEN_EXPIRES_IN=15m
 REFRESH_TOKEN_EXPIRES_IN=7d
-4️⃣ Run the Server
+
+##4️⃣ Run the Server
 Development
 npm run dev
 Production
 npm start
 Server will run on:
-http://localhost:5000
-📜 NPM Scripts
+http://localhost:PORT (from env) 
+
+##📜 NPM Scripts
 Script	Description
 npm run dev	Start server with nodemon
 npm start	Start production server
@@ -123,7 +129,8 @@ POST	/auth/login	Login and receive tokens
 POST	/auth/refresh	Rotate refresh token
 POST	/auth/logout	Logout and invalidate session
 GET	/auth/me	Get current authenticated user
-🧑‍💻 Frontend Usage (Recommended Pattern)
+
+##🧑‍💻 Frontend Usage (Recommended Pattern)
 Call /auth/login
 Store access token in memory (NOT localStorage)
 Refresh token stays in HTTP-only cookie
@@ -132,19 +139,22 @@ Call /auth/refresh
 Retry failed request
 User remains logged in seamlessly
 Secure by default. No token leaks.
-🔐 Security Notes
+
+##🔐 Security Notes
 Refresh tokens are single-use
 Old refresh tokens are invalidated
 Cookies are HTTP-only
 Access tokens are short-lived
 Prevents replay attacks
-🧪 Who Should Use This?
+
+##🧪 Who Should Use This?
 SaaS builders
 Indie hackers
 Startup MVPs
 Full-stack developers
 Anyone tired of rewriting auth
-🛣 Future Updates
+
+##🛣 Future Updates
 🔍 Request & data validation using Zod
 🧪 Better error handling & typed responses
 📦 Docker support
