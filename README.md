@@ -96,3 +96,11 @@ token-rotation-auth/
 ├── app.js
 ├── server.js
 └── package.json
+```
+
+⚙️ Installation & Setup
+1️⃣ Clone the Repository
+git clone https://github.com/Adam2053/token-rotation-auth-adam.git
+cd token-rotation-auth-adam
+
+
